@@ -1,0 +1,18 @@
+.header{
+    background-color: #ffffff;
+    color: #1e1e1e
+}
+
+.main-content{
+    display: flex;
+    justify-content: center;
+    background: #0099ff;
+}
+
+.main-content > div{
+    display: flex;
+    width: 100%;
+    max-width: 1600px;
+    padding: 100px 0;
+    background: #0077ff;
+}
