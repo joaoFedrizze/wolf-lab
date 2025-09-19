@@ -1,0 +1,97 @@
+$color-bg: #1e1e1e;
+$color-white: #ffffff;
+$color-black: #1e1e1e;
+
+$hover-colors: (
+  1: #ed7e7e,
+  2: #7eed7e,
+  3: #7ec2ed,
+  4: $color-black,
+);
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 16px;
+
+  .main-content-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $color-white;
+    width: 48%;
+    min-height: 500px;
+
+    h1 {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      font-size: 40px;
+      font-weight: 700px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      border-left: 6px solid $color-white;
+      padding-left: 6px;
+      font-size: 20px;
+      font-weight: 700px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+
+  .main-content-banner {
+    display: flex;
+    justify-content: end;
+    height: 500px;
+    width: 48%;
+    background: rgba(255, 255, 255, 0.5);
+
+    span {
+      display: flex;
+      justify-content: flex-end;
+      height: 500px;
+      width: 16%;
+
+      span {
+        display: block;
+        width: 33%;
+        height: 500px;
+        transition: 0.3s background;
+      }
+    }
+
+    .banner-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $color-white;
+      color: $color-black;
+      width: 84%;
+
+      H2 {
+        font-size: 36px;
+      }
+
+      p {
+        margin-left: 12px;
+      }
+    }
+  }
+}
+
+@each $i, $color in $hover-colors {
+  .banner-line#{$i} {
+    background: rgba(255, 255, 255, (0.3 * ($i - 1)));
+
+    &:hover {
+      background: $color;
+    }
+  }
+}

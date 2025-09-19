@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+$color-bg: #1e1e1e;
+$color-white: #ffffff;
+$color-black: #1e1e1e;
+
+.main-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: $color-white;
+  // box-shadow: 0px 4px 14px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: -10px 10px 18px -10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  border-bottom: $color-black 1px solid;
+
+  .main-header-container {
+    display: flex;
+    justify-content: space-between;
+    height: 90px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 4px 16px 0 16px;
+
+    .main-header-logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      align-items: center;
+
+      p {
+        padding: 0;
+        font-weight: 700;
+        margin: 6px 0 0 0;
+        color: $color-black;
+      }
+    }
+
+    .main-header-logo > img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .main-header-menu {
+    color: $color-black;
+    display: flex;
+    align-items: flex-end;
+    min-height: 50px;
+    min-width: 50px;
+
+    ul {
+      display: flex;
+      align-content: flex-end;
+      align-items: flex-end;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        display: flex;
+        margin-left: 12px;
+        background: url("../../assets/img/bottom-button.png");
+        background-repeat: no-repeat;
+        background-position: 0 24px;
+        transition: background-position 0.3s ease;
+
+        a {
+          color: $color-black;
+          text-decoration: none;
+          padding: 6px;
+          transition: 0.3s color;
+
+          &:hover {
+            color: $color-white;
+          }
+        }
+
+        &:hover {
+          background-position: 0px 0;
+        }
+      }
+    }
+  }
+}
