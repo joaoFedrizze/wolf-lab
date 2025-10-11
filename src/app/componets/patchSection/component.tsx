@@ -1,10 +1,78 @@
 import Link from "next/link";
 import "./style.scss";
 
-import { FaNodeJs, FaSass, FaCodeBranch, FaReact } from "react-icons/fa";
+import {
+  FaNodeJs,
+  FaSass,
+  FaCodeBranch,
+  FaReact,
+  FaDocker,
+} from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 
-export default function PatchSection() {
+export default function PatchSection({ isApresentation }) {
+  const content = [
+    {
+      version: { name: "Versão 1.3.1", time: "11/10/2025" },
+      content: [
+        {
+          title: "React",
+          icon: <FaReact className="icon" />,
+          list: [
+            "+ Projeto foi separado em componentes permitindo uma melhor organização",
+            "+ Um novo componente patch section foi adicionado, esse componente permite ter um modo de apresentação para a home do projeto",
+            "+ Loops foram adicionados para simplificar o código em main section",
+            "+ Frases foram adicionadas na splash text do site: GIT, SCSS, NodeJS, Docker",
+            "+ Página de patch note foi implementado onde mostra todas as notas para um resumo de como está a evolução do projeto",
+          ],
+        },
+        {
+          title: "Node JS",
+          icon: <FaNodeJs className="icon" />,
+          list: ["+ Adicionado a biblioteca de React icons"],
+        },
+        {
+          title: "Docker",
+          icon: <FaDocker className="icon" />,
+          list: ["+ Arquivos Dockerfile e .dockerignore"],
+        },
+      ],
+    },
+    {
+      version: { name: "Versão 1.2.2", time: "02/09/2025" },
+      content: [
+        {
+          title: "SCSS",
+          icon: <FaSass className="icon" />,
+          list: [
+            "+ Foram adicionados uma folha de estilo para o Header e para main section na página inicial",
+            "+ Uma pequena diversão foi adicionada na main section ao passar o mouse nos banners",
+            "- Classe alpha que era utilizada para testes foi removida do código",
+          ],
+        },
+        {
+          title: "JavaScript",
+          icon: <IoLogoJavascript className="icon" />,
+          list: [
+            "+ Uma animação de simulando um texto digitando na main section foi adicionado",
+          ],
+        },
+      ],
+    },
+    {
+      version: { name: "Versão 1.0.0", time: "02/09/2025" },
+      content: [
+        {
+          title: "React",
+          icon: <FaReact className="icon" />,
+          list: ["+ Início do projeto, alguns quadrados azuis sem sentido"],
+        },
+      ],
+    },
+  ];
+
+  const renderContent = isApresentation ? [content[0], content[1]] : content;
+
   return (
     <section className="patch">
       <div className="title">
@@ -20,100 +88,40 @@ export default function PatchSection() {
       </span>
 
       <div className="patch-notes">
-        <div className="patch-article">
-          <div className="patch-title">
-            <h3>
-              Versão 1.3.1 <time>00/09/2025</time>
-            </h3>
+        {renderContent.map((item, index) => {
+          return (
+            <div key={`patch-` + index} className="patch-article">
+              <div className="patch-title">
+                <h3>
+                  {item.version.name} <time>{item.version.time}</time>
+                </h3>
+              </div>
+
+              {item.content.map((item, index) => {
+                return (
+                  <div key={`listItem-` + index}>
+                    <h4>
+                      {item.icon} {item.title}
+                    </h4>
+
+                    <ul>
+                      {item.list.map((item, index) => {
+                        return <li key={`listContent-` + index}>{item}</li>;
+                      })}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+        {isApresentation ? (
+          <div className="shadow-line">
+            <Link href="/patchNote">Continue lendo aqui</Link>
           </div>
-
-          <h4>
-            <FaReact className="icon" /> React
-          </h4>
-          <ul>
-            <li>
-              + Projeto foi separado em componentes permitindo uma melhor
-              organização
-            </li>
-            <li>
-              + Um novo componente patch section foi adicionado, ele é utilizado
-              como uma pequena preview para a página de patch note
-            </li>
-            <li>
-              + Loops foram adicionados para simplificar o código em main
-              section
-            </li>
-            <li>
-              + Frases foram adicionadas na splash text do site: GIT, SCSS,
-              NodeJS
-            </li>
-            <li>
-              + Página de patch note foi implementado onde mostra todas as notas
-              para um resumo de como está a evolução do projeto
-            </li>
-          </ul>
-
-          <h4>
-            <FaNodeJs className="icon" /> Node JS
-          </h4>
-          <ul>
-            <li>+ Adicionado a biblioteca de React icons</li>
-          </ul>
-        </div>
-
-        <div className="patch-article">
-          <div className="patch-title">
-            <h3>
-              Versão 1.2.2 <time>02/09/2025</time>
-            </h3>
-          </div>
-
-          <h4>
-            <FaSass className="icon" /> SCSS
-          </h4>
-          <ul>
-            <li>
-              + Foram adicionados uma folha de estilo para o Header e para main
-              section na página inicial
-            </li>
-            <li>
-              + Uma pequena diversão foi adicionada na main section ao passar o
-              mouse nos banners
-            </li>
-            <li>
-              - Classe alpha que era utilizada para testes foi removida do
-              código
-            </li>
-          </ul>
-          <h4>
-            <IoLogoJavascript className="icon" />
-            JavaScript
-          </h4>
-          <ul>
-            <li>
-              + Uma animação de simulando um texto digitando na main section foi
-              adicionado
-            </li>
-          </ul>
-        </div>
-
-        <div className="patch-article">
-          <div className="patch-title">
-            <h3>
-              Versão 1.0.0 <time>02/09/2025</time>
-            </h3>
-          </div>
-
-          <h4>
-            <FaReact className="icon" /> React
-          </h4>
-          <ul>
-            <li>+ Início do projeto, alguns quadrados azuis sem sentido</li>
-          </ul>
-        </div>
-        <div className="shadow-line">
-          <Link href="/patchNote">Continue lendo aqui</Link>
-        </div>
+        ) : (
+          <></>
+        )}
       </div>
     </section>
   );

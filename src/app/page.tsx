@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <HeaderCompnent />
       <MainSectionComponent />
-      <PatchSectionComponent />
+      <PatchSectionComponent isApresentation={true} />
     </>
   );
 }

@@ -3,16 +3,17 @@
 import "./style.scss";
 import Image from "next/image";
 import dogTrack from "../../assets/img/dog-track.png";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <header className="main-header">
       <div className="main-header-container">
-        <div className="main-header-logo">
+        <Link href="/" className="main-header-logo">
           <Image src={dogTrack} alt="" />
 
           <p>WOLF LAB</p>
-        </div>
+        </Link>
 
         <nav className="main-header-menu">
           <ul>

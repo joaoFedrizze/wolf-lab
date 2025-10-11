@@ -12,6 +12,7 @@ export default function MainSection() {
       "GIT",
       "SCSS",
       "NodeJS",
+      "Docker",
     ],
     currentText: "Laboratory",
     writing: false,
