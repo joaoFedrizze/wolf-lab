@@ -13,7 +13,7 @@ import { IoLogoJavascript } from "react-icons/io";
 export default function PatchSection({ isApresentation }) {
   const content = [
     {
-      version: { name: "Versão 1.3.1", time: "11/10/2025" },
+      version: { name: "Versão 1.3.2", time: "11/10/2025" },
       content: [
         {
           title: "React",
@@ -35,6 +35,13 @@ export default function PatchSection({ isApresentation }) {
           title: "Docker",
           icon: <FaDocker className="icon" />,
           list: ["+ Arquivos Dockerfile e .dockerignore"],
+        },
+        {
+          title: "SCSS",
+          icon: <FaSass className="icon" />,
+          list: [
+            "+ Feito a correção de algums estilos que não foram aplicados corretamente ao commit",
+          ],
         },
       ],
     },
