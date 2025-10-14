@@ -1,6 +1,4 @@
-$color-bg: #1e1e1e;
-$color-white: #ffffff;
-$color-black: #1e1e1e;
+@import "../../global";
 
 $hover-colors: (
   1: #ed7e7e,
@@ -88,10 +86,20 @@ $hover-colors: (
 
 @each $i, $color in $hover-colors {
   .banner-line#{$i} {
-    background: rgba(255, 255, 255, (0.3 * ($i - 1)));
+    background: rgba(255, 255, 255, (0.2 * ($i - 1)));
 
     &:hover {
       background: $color;
     }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .main-content-banner {
+    display: none !important;
+  }
+
+  .main-content-text {
+    width: 100% !important;
   }
 }

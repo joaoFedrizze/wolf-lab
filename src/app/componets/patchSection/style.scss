@@ -1,14 +1,11 @@
-$color-black: #1e1e1e;
-$color-blue: #0099ff;
-$color-white: #ffffff;
-$color-gray: #f0f0f0;
+@import "../../global";
 
 .patch {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background: #ffffff;
+  background: $color-white;
   padding: 40px 0 20px 0;
   color: $color-black;
   overflow-x: hidden;
@@ -56,7 +53,7 @@ $color-gray: #f0f0f0;
       justify-content: center;
       width: 100%;
 
-      box-shadow: 0 -50px 100px 60px rgba(255, 255, 255, 1);
+      box-shadow: 0 -50px 100px 60px $color-white;
 
       a {
         color: $color-blue;
@@ -102,6 +99,10 @@ $color-gray: #f0f0f0;
 
       ul {
         margin-bottom: 20px;
+
+        li {
+          display: flex;
+        }
       }
     }
   }

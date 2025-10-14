@@ -10,8 +10,54 @@ import {
 } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 
-export default function PatchSection({ isApresentation }) {
+import InlineCode from "../inlineCode/component";
+
+type PatchSectionProps = {
+  isApresentation: boolean;
+};
+
+export default function PatchSection({ isApresentation }: PatchSectionProps) {
   const content = [
+    {
+      version: { name: "Versão 1.4.0", time: "13/10/2025" },
+      content: [
+        {
+          title: "React",
+          icon: <FaReact className="icon" />,
+          list: [
+            "+ Adição do componente Footer ao projeto",
+            <>
+              + No componente de <InlineCode>patchSection</InlineCode>
+              foi adicionado tipagem das váriaveis
+            </>,
+          ],
+        },
+        {
+          title: "Node JS",
+          icon: <FaNodeJs className="icon" />,
+          list: [
+            <>
+              + Adição de <InlineCode>config.js</InlineCode> no projeto para
+              varíaveis globais
+            </>,
+          ],
+        },
+        {
+          title: "SCSS",
+          icon: <FaSass className="icon" />,
+          list: [
+            <>
+              + Criado o arquivo <InlineCode>_global.scss</InlineCode> para
+              poder padronizar valore como cores, fontes e medidas
+            </>,
+            <>
+              / Ajustado a responsividade do componente
+              <InlineCode>mainSection</InlineCode>
+            </>,
+          ],
+        },
+      ],
+    },
     {
       version: { name: "Versão 1.3.2", time: "11/10/2025" },
       content: [
@@ -20,10 +66,17 @@ export default function PatchSection({ isApresentation }) {
           icon: <FaReact className="icon" />,
           list: [
             "+ Projeto foi separado em componentes permitindo uma melhor organização",
-            "+ Um novo componente patch section foi adicionado, esse componente permite ter um modo de apresentação para a home do projeto",
-            "+ Loops foram adicionados para simplificar o código em main section",
+            <>
+              + Um novo componente <InlineCode>patchSection</InlineCode> foi
+              adicionado, esse componente permite ter um modo de apresentação
+              para a home do projeto
+            </>,
+            <>
+              + Loops foram adicionados para simplificar o código em{" "}
+              <InlineCode>mainSection</InlineCode>
+            </>,
             "+ Frases foram adicionadas na splash text do site: GIT, SCSS, NodeJS, Docker",
-            "+ Página de patch note foi implementado onde mostra todas as notas para um resumo de como está a evolução do projeto",
+            "+ Página de patch note foi implementado, onde mostra todas as notas para um resumo de como está a evolução do projeto",
           ],
         },
         {
@@ -34,7 +87,12 @@ export default function PatchSection({ isApresentation }) {
         {
           title: "Docker",
           icon: <FaDocker className="icon" />,
-          list: ["+ Arquivos Dockerfile e .dockerignore"],
+          list: [
+            <>
+              + Arquivos <InlineCode>Dockerfile</InlineCode> e{" "}
+              <InlineCode>.dockerignore</InlineCode>
+            </>,
+          ],
         },
         {
           title: "SCSS",
@@ -52,9 +110,16 @@ export default function PatchSection({ isApresentation }) {
           title: "SCSS",
           icon: <FaSass className="icon" />,
           list: [
-            "+ Foram adicionados uma folha de estilo para o Header e para main section na página inicial",
+            <>
+              + Foram adicionados uma folha de estilo para o{" "}
+              <InlineCode>Header</InlineCode> e para{" "}
+              <InlineCode>mainSection</InlineCode> na página inicial
+            </>,
             "+ Uma pequena diversão foi adicionada na main section ao passar o mouse nos banners",
-            "- Classe alpha que era utilizada para testes foi removida do código",
+            <>
+              - Classe <InlineCode>.alpha</InlineCode> que era utilizada para
+              testes foi removida do código
+            </>,
           ],
         },
         {
@@ -113,7 +178,11 @@ export default function PatchSection({ isApresentation }) {
 
                     <ul>
                       {item.list.map((item, index) => {
-                        return <li key={`listContent-` + index}>{item}</li>;
+                        return (
+                          <li key={`listContent-` + index}>
+                            <p>{item}</p>
+                          </li>
+                        );
                       })}
                     </ul>
                   </div>

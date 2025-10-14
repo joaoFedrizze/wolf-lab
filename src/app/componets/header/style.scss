@@ -1,15 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
-$color-bg: #1e1e1e;
-$color-white: #ffffff;
-$color-black: #1e1e1e;
+@import "../../global";
 
 .main-header {
   display: flex;
   justify-content: center;
   width: 100%;
   background: $color-white;
-  // box-shadow: 0px 4px 14px -6px rgba(0, 0, 0, 0.2);
   box-shadow: -10px 10px 18px -10px rgba(0, 0, 0, 0.1);
   z-index: 1;
   border-bottom: $color-black 1px solid;
@@ -67,7 +62,6 @@ $color-black: #1e1e1e;
         transition: background-position 0.3s ease;
 
         a {
-          color: $color-black;
           text-decoration: none;
           padding: 6px;
           transition: 0.3s color;

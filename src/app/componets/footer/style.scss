@@ -1,0 +1,48 @@
+@import "../../global";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+
+  background-color: $color-black;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+
+    li {
+      padding: 8px;
+
+      a {
+        display: block;
+        background: #eeeeee;
+        padding: 20px;
+        border-radius: 28px;
+        color: $color-black;
+
+        transition: 0.3s;
+
+        svg {
+          display: block;
+          width: 16px;
+          height: 16px;
+        }
+      }
+      :hover {
+        background-color: #cccccc;
+      }
+    }
+  }
+
+  .footer-version {
+    font-size: 12px;
+  }
+}
