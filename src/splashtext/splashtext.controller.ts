@@ -5,7 +5,6 @@ import { SplashtextService } from './splashtext.service';
 export class SplashtextController {
   constructor(private readonly splashtextService: SplashtextService) {}
 
-  // Rota que retorna todos os textos
   @Get()
   getAll() {
     return { splashtexts: this.splashtextService.findAll() };
