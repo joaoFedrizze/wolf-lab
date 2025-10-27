@@ -1,2 +1,2 @@
-export const projectVersion = "1.4.0";
-export const lastUpdate = "13/10/2025";
+export const projectVersion = "1.6.2";
+export const lastUpdate = "27/10/2025";

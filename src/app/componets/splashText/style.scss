@@ -1,0 +1,45 @@
+$caret-speed: 1s;
+
+.splash-caret {
+  display: inline-block;
+  position: relative;
+  padding-right: 6px;
+  border-radius: 4px;
+  color: inherit;
+  font-family: monospace;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    width: 2px;
+    height: 1em;
+    background-color: currentColor;
+    transform: translateY(-50%);
+    opacity: 0.6;
+    animation: caretBlink $caret-speed steps(1) infinite;
+  }
+
+  &.writing::after {
+    opacity: 1;
+  }
+}
+
+@keyframes caretBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-caret::after {
+    animation: none;
+    opacity: 1;
+  }
+}

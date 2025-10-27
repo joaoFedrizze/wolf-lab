@@ -1,64 +1,16 @@
 import { useState, useEffect, useRef } from "react";
+import { getSplashtexts } from "@/app/services/splashText";
 import "./style.scss";
 
-export default function MainSection() {
-  const [textData, setTextData] = useState({
-    content: [
-      "React",
-      "HTML",
-      "CSS3",
-      "Java_Script",
-      "Laboratory",
-      "GIT",
-      "SCSS",
-      "NodeJS",
-      "Docker",
-    ],
-    currentText: "Laboratory",
-    writing: false,
-    selector: 0,
-    pause: false,
-  });
+import SplashTextComponent from "../splashText/component";
 
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+export default function MainSection() {
+  const [splashText, setSplashText] = useState<string[]>([]);
 
   useEffect(() => {
-    const loopStep = () => {
-      setTextData((prev) => {
-        let { content, currentText, writing, selector, pause } = prev;
-
-        if (pause) return prev;
-
-        if (!writing) {
-          if (currentText.length > 0) {
-            currentText = currentText.slice(0, -1);
-          } else {
-            writing = true;
-          }
-        } else {
-          const targetText = content[selector];
-          if (currentText !== targetText) {
-            currentText += targetText[currentText.length];
-          } else {
-            writing = false;
-            selector = (selector + 1) % content.length;
-            pause = true;
-
-            setTimeout(() => {
-              setTextData((p) => ({ ...p, pause: false }));
-            }, 3000);
-          }
-        }
-
-        return { content, currentText, writing, selector, pause };
-      });
-    };
-
-    intervalRef.current = setInterval(loopStep, 120);
-
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
+    getSplashtexts().then((data) => {
+      setSplashText(data);
+    });
   }, []);
 
   return (
@@ -87,13 +39,16 @@ export default function MainSection() {
       <div className="main-content-banner">
         <span>
           {Array.from({ length: 4 }).map((_, i) => (
-            <span key={i} className={`banner-line${i + 1}`}></span>
+            <span key={i} className={`banner-line${i + 1}`} />
           ))}
         </span>
-
         <div className="banner-text">
           <h2>WOLF</h2>
-          <p>{textData.currentText}</p>
+          {splashText.length < 0 ? (
+            ""
+          ) : (
+            <SplashTextComponent splashTextContent={splashText} />
+          )}
         </div>
       </div>
     </section>

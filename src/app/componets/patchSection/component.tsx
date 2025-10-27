@@ -1,149 +1,89 @@
 import Link from "next/link";
 import "./style.scss";
 
-import {
-  FaNodeJs,
-  FaSass,
-  FaCodeBranch,
-  FaReact,
-  FaDocker,
-} from "react-icons/fa";
-import { IoLogoJavascript } from "react-icons/io";
+import { getPatch } from "@/app/services/patch";
+
+import * as FaIcons from "react-icons/fa";
+import * as IoIcons from "react-icons/io";
+import * as SiIcons from "react-icons/si";
+import * as DiIcons from "react-icons/di";
 
 import InlineCode from "../inlineCode/component";
+import { useEffect, useState } from "react";
 
 type PatchSectionProps = {
   isApresentation: boolean;
 };
 
-export default function PatchSection({ isApresentation }: PatchSectionProps) {
-  const content = [
-    {
-      version: { name: "Versão 1.4.0", time: "13/10/2025" },
-      content: [
-        {
-          title: "React",
-          icon: <FaReact className="icon" />,
-          list: [
-            "+ Adição do componente Footer ao projeto",
-            <>
-              + No componente de <InlineCode>patchSection</InlineCode>
-              foi adicionado tipagem das váriaveis
-            </>,
-          ],
-        },
-        {
-          title: "Node JS",
-          icon: <FaNodeJs className="icon" />,
-          list: [
-            <>
-              + Adição de <InlineCode>config.js</InlineCode> no projeto para
-              varíaveis globais
-            </>,
-          ],
-        },
-        {
-          title: "SCSS",
-          icon: <FaSass className="icon" />,
-          list: [
-            <>
-              + Criado o arquivo <InlineCode>_global.scss</InlineCode> para
-              poder padronizar valore como cores, fontes e medidas
-            </>,
-            <>
-              / Ajustado a responsividade do componente
-              <InlineCode>mainSection</InlineCode>
-            </>,
-          ],
-        },
-      ],
-    },
-    {
-      version: { name: "Versão 1.3.2", time: "11/10/2025" },
-      content: [
-        {
-          title: "React",
-          icon: <FaReact className="icon" />,
-          list: [
-            "+ Projeto foi separado em componentes permitindo uma melhor organização",
-            <>
-              + Um novo componente <InlineCode>patchSection</InlineCode> foi
-              adicionado, esse componente permite ter um modo de apresentação
-              para a home do projeto
-            </>,
-            <>
-              + Loops foram adicionados para simplificar o código em{" "}
-              <InlineCode>mainSection</InlineCode>
-            </>,
-            "+ Frases foram adicionadas na splash text do site: GIT, SCSS, NodeJS, Docker",
-            "+ Página de patch note foi implementado, onde mostra todas as notas para um resumo de como está a evolução do projeto",
-          ],
-        },
-        {
-          title: "Node JS",
-          icon: <FaNodeJs className="icon" />,
-          list: ["+ Adicionado a biblioteca de React icons"],
-        },
-        {
-          title: "Docker",
-          icon: <FaDocker className="icon" />,
-          list: [
-            <>
-              + Arquivos <InlineCode>Dockerfile</InlineCode> e{" "}
-              <InlineCode>.dockerignore</InlineCode>
-            </>,
-          ],
-        },
-        {
-          title: "SCSS",
-          icon: <FaSass className="icon" />,
-          list: [
-            "+ Feito a correção de algums estilos que não foram aplicados corretamente ao commit",
-          ],
-        },
-      ],
-    },
-    {
-      version: { name: "Versão 1.2.2", time: "02/09/2025" },
-      content: [
-        {
-          title: "SCSS",
-          icon: <FaSass className="icon" />,
-          list: [
-            <>
-              + Foram adicionados uma folha de estilo para o{" "}
-              <InlineCode>Header</InlineCode> e para{" "}
-              <InlineCode>mainSection</InlineCode> na página inicial
-            </>,
-            "+ Uma pequena diversão foi adicionada na main section ao passar o mouse nos banners",
-            <>
-              - Classe <InlineCode>.alpha</InlineCode> que era utilizada para
-              testes foi removida do código
-            </>,
-          ],
-        },
-        {
-          title: "JavaScript",
-          icon: <IoLogoJavascript className="icon" />,
-          list: [
-            "+ Uma animação de simulando um texto digitando na main section foi adicionado",
-          ],
-        },
-      ],
-    },
-    {
-      version: { name: "Versão 1.0.0", time: "02/09/2025" },
-      content: [
-        {
-          title: "React",
-          icon: <FaReact className="icon" />,
-          list: ["+ Início do projeto, alguns quadrados azuis sem sentido"],
-        },
-      ],
-    },
-  ];
+export type PatchListItem =
+  | { text: string }
+  | { code: string }
+  | { link: string; url: string }
+  | string;
 
-  const renderContent = isApresentation ? [content[0], content[1]] : content;
+export type PatchListGroup = PatchListItem[];
+
+export interface PatchContent {
+  title: string;
+  icon: string;
+  list: PatchListGroup[];
+}
+
+export interface PatchVersion {
+  name: string;
+  time: string;
+  patch_id: number;
+}
+
+export interface PatchData {
+  version: PatchVersion;
+  content: PatchContent[];
+}
+
+export default function PatchSection({ isApresentation }: PatchSectionProps) {
+  const [patchData, setPatchData] = useState<PatchData[] | []>([]);
+  const renderContent = isApresentation
+    ? [patchData[0], patchData[1]]
+    : patchData;
+
+  useEffect(() => {
+    getPatch().then((data) => {
+      setPatchData(data);
+    });
+  }, []);
+
+  const DynamicIcon = ({ iconName }: { iconName: string }) => {
+    const iconPacks = {
+      Fa: FaIcons,
+      Io: IoIcons,
+      Si: SiIcons,
+      Di: DiIcons,
+    };
+
+    const prefix = iconName.slice(0, 2);
+    const pack = iconPacks[prefix as keyof typeof iconPacks];
+    const IconComponent = pack ? (pack as any)[iconName] : null;
+
+    if (!IconComponent) {
+      return <span>Ícone não encontrado: {iconName}</span>;
+    }
+
+    return <IconComponent className="icon" />;
+  };
+
+  const DynamicText = ({ content }: { content: any }) => {
+    if (content.text != undefined) {
+      return <>{content.text}</>;
+    } else if (content.code != undefined) {
+      return <InlineCode> {content.code} </InlineCode>;
+    } else if (content.link != undefined) {
+      if (typeof content.url === "string" && content.url.trim() !== "") {
+        return <Link href={content.url}>{content.link}</Link>;
+      }
+    }
+
+    return <></>;
+  };
 
   return (
     <section className="patch">
@@ -155,42 +95,58 @@ export default function PatchSection({ isApresentation }: PatchSectionProps) {
 
       <span className="line-container">
         <span className="line" />
-        <FaCodeBranch className="line-image" />
+        <FaIcons.FaCodeBranch className="line-image" />
         <span className="line" />
       </span>
 
       <div className="patch-notes">
-        {renderContent.map((item, index) => {
-          return (
-            <div key={`patch-` + index} className="patch-article">
-              <div className="patch-title">
-                <h3>
-                  {item.version.name} <time>{item.version.time}</time>
-                </h3>
+        {patchData.length < 1 ? (
+          <>
+            {Array.from({ length: isApresentation ? 2 : 5 }).map((_, i) => (
+              <span key={i} className="patch-skeleton" />
+            ))}
+          </>
+        ) : (
+          renderContent.map((item, index) => {
+            return (
+              <div key={`patch-` + index} className="patch-article">
+                <div className="patch-title">
+                  <h3>
+                    {item.version.name} <time>{item.version.time}</time>
+                  </h3>
+                </div>
+                {item.content.map((content, index) => {
+                  return (
+                    <div key={`listItem-` + index}>
+                      <h4>
+                        <DynamicIcon iconName={content.icon} /> {content.title}
+                      </h4>
+
+                      <ul>
+                        {content.list.map((listItem, index) => {
+                          return (
+                            <li key={`listContent-` + index}>
+                              <p>
+                                {listItem.map((textItem, index) => {
+                                  return (
+                                    <DynamicText
+                                      key={`textItem` + index}
+                                      content={textItem}
+                                    />
+                                  );
+                                })}
+                              </p>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  );
+                })}
               </div>
-
-              {item.content.map((item, index) => {
-                return (
-                  <div key={`listItem-` + index}>
-                    <h4>
-                      {item.icon} {item.title}
-                    </h4>
-
-                    <ul>
-                      {item.list.map((item, index) => {
-                        return (
-                          <li key={`listContent-` + index}>
-                            <p>{item}</p>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
+            );
+          })
+        )}
         {isApresentation ? (
           <div className="shadow-line">
             <Link href="/patchNote">Continue lendo aqui</Link>

@@ -47,6 +47,7 @@
     align-items: center;
     flex-direction: column;
     max-width: 800px;
+    width: 100%;
 
     .shadow-line {
       display: flex;
@@ -64,6 +65,17 @@
           color: #0033ff;
         }
       }
+    }
+
+    .patch-skeleton {
+      width: 90%;
+      border: 2px solid $color-gray;
+      border-radius: 12px;
+      margin-top: 24px;
+      padding: 12px;
+      height: 260px;
+
+      background-color: $color-gray;
     }
 
     .patch-article {
@@ -102,6 +114,10 @@
 
         li {
           display: flex;
+
+          a {
+            color: #0033ff;
+          }
         }
       }
     }
