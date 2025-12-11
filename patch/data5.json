@@ -1,0 +1,54 @@
+{
+  "version": {
+    "name": "Versão 1.5.1",
+    "time": "21/10/2025",
+    "patch_id": 5
+  },
+  "content": [
+    {
+      "title": "GIT",
+      "icon": "FaGitAlt",
+      "list": [
+        [
+          {
+            "text": "+ Adicionado uma nova branch no projeto para estar trabalhando "
+          },
+          {
+            "code": "Nest.js"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "Nest",
+      "icon": "SiNestjs",
+      "list": [
+        [
+          {
+            "text": "+ Recem criado o projeto em Nest, tendo apenas as splash text's como exemplo"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "React",
+      "icon": "FaReact",
+      "list": [
+        [
+          {
+            "text": "+ Foi criado o diretório de "
+          },
+          {
+            "code": "services "
+          },
+          {
+            "text": "junto com o primeiro serviço "
+          },
+          {
+            "code": "splashText.ts"
+          }
+        ]
+      ]
+    }
+  ]
+}

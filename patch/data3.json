@@ -1,0 +1,91 @@
+{
+    "version": {
+        "name": "Versão 1.3.2",
+        "time": "11/10/2025",
+        "patch_id": 3
+    },
+    "content": [
+        {
+            "title": "React",
+            "icon": "FaReact",
+            "list": [
+                [
+                    {
+                        "text": "+ Projeto foi separado em componentes permitindo uma melhor organização"
+                    }
+                ],
+                [
+                    {
+                        "text": "+ Um novo componente "
+                    },
+                    {
+                        "code": "patchSection"
+                    },
+                    {
+                        "text": " foi adicionado, esse componente permite ter um modo de apresentação para a home do projeto"
+                    }
+                ],
+                [
+                    {
+                        "text": " + Loops foram adicionados para simplificar o código em "
+                    },
+                    {
+                        "code": "mainSection"
+                    }
+                ],
+                [
+                    {
+                        "text": "+ Frases foram adicionadas na splash text do site: GIT, SCSS, NodeJS, Docker"
+                    }
+                ],
+                [
+                    {
+                        "text": "+ Página de patch note foi implementado, onde mostra todas as notas para um resumo de como está a evolução do projeto"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": "Node JS",
+            "icon": "FaNodeJs",
+            "list": [
+                [
+                    {
+                        "text": "+ Adicionado a biblioteca de React icons"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": "Docker",
+            "icon": "FaDocker",
+            "list": [
+                [
+                    {
+                        "text": "+ Arquivos "
+                    },
+                    {
+                        "code": "Dockerfile"
+                    },
+                    {
+                        "text": " e "
+                    },
+                    {
+                        "code": ".dockerignore"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": "SCSS",
+            "icon": "FaSass",
+            "list": [
+                [
+                    {
+                        "text": "+ Feito a correção de algums estilos que não foram aplicados corretamente ao commit"
+                    }
+                ]
+            ]
+        }
+    ]
+}

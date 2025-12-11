@@ -1,0 +1,20 @@
+{
+  "version": {
+    "name": "Versão 1.0.0",
+    "time": "02/09/2025",
+    "patch_id": 1
+  },
+  "content": [
+    {
+      "title": "React",
+      "icon": "FaReact",
+      "list": [
+        [
+          {
+            "text": "+ Início do projeto, alguns quadrados azuis sem sentido"
+          }
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "version": {
+    "name": "Versão 1.2.2",
+    "time": "02/09/2025",
+    "patch_id": 2
+  },
+  "content": [
+    {
+      "title": "SCSS",
+      "icon": "FaSass",
+      "list": [
+        [
+          {
+            "text": "+ Foram adicionados uma folha de estilo para o "
+          },
+          {
+            "code": "Header"
+          },
+          {
+            "text": " e para "
+          },
+          {
+            "code": "mainSection"
+          },
+          {
+            "text": " na página inicial"
+          }
+        ],
+        [
+          {
+            "text": "+ Uma pequena diversão foi adicionada na main section ao passar o mouse nos banners"
+          }
+        ],
+        [
+          {
+            "text": "- Classe "
+          },
+          {
+            "code": ".alpha"
+          },
+          {
+            "text": " que era utilizada para testes foi removida do código"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "JavaScript",
+      "icon": "IoLogoJavascript",
+      "list": [
+        [
+          {
+            "text": "+ Uma animação de simulando um texto digitando na main section foi adicionado"
+          }
+        ]
+      ]
+    }
+  ]
+}

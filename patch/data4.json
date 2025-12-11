@@ -1,0 +1,73 @@
+{
+  "version": {
+    "name": "Versão 1.4.0",
+    "date": "13/10/2025",
+    "patch_id": 4
+  },
+  "content": [
+    {
+      "title": "React",
+      "icon": "FaReact",
+      "list": [
+        [
+          {
+            "text": "+ Adição do componente Footer ao projeto"
+          }
+        ],
+        [
+          {
+            "text": "+ No componente de "
+          },
+          {
+            "code": "patchSection"
+          },
+          {
+            "text": " foi adicionada tipagem das variáveis"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "Node.js",
+      "icon": "FaNodeJs",
+      "list": [
+        [
+          {
+            "text": "+ Adição de "
+          },
+          {
+            "code": "config.js"
+          },
+          {
+            "text": " no projeto para variáveis globais"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "SCSS",
+      "icon": "FaSass",
+      "list": [
+        [
+          {
+            "text": "+ Criado o arquivo "
+          },
+          {
+            "code": "_global.scss"
+          },
+          {
+            "text": " para padronizar valores como cores, fontes e medidas"
+          }
+        ],
+        [
+          {
+            "text": "/ Ajustada a responsividade do componente "
+          },
+          {
+            "code": "mainSection"
+          }
+        ]
+      ]
+    }
+  ]
+}

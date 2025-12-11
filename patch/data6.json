@@ -1,0 +1,122 @@
+{
+  "version": {
+    "name": "Versão 1.6.2",
+    "time": "24/09/2025",
+    "patch_id": 6
+  },
+  "content": [
+    {
+      "title": "React",
+      "icon": "FaReact",
+      "list": [
+        [
+          {
+            "text": "+ Criado o componente "
+          },
+          {
+            "code": "SplashText"
+          },
+          {
+            "text": " para organizar melhor o código e possívelmente reutilizar em outra página no futuro"
+          }
+        ],
+        [
+          {
+            "text": "+ Foi criado um "
+          },
+          {
+            "code": "Skeleton"
+          },
+          {
+            "text": " ao componente de "
+          },
+          {
+            "code": "PatchSection"
+          },
+          {
+            "text": " para quando as informações não forem carregadas"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "MongoDB",
+      "icon": "DiMongodb",
+      "list": [
+        [
+          {
+            "text": "+ Foi criado o banco de dados do MongoDB"
+          }
+        ],
+        [
+          {
+            "text": "Uma coleção de "
+          },
+          {
+            "code": "patch"
+          },
+          {
+            "text": " foi criado para remover as informações mocadas no front"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "NestJS",
+      "icon": "SiNestjs",
+      "list": [
+        [
+          {
+            "text": "+ Adicionado a biblíoteca de "
+          },
+          {
+            "link": "Mongoose",
+            "url": "https://www.npmjs.com/package/mongoose"
+          },
+          {
+            "text": " ao projeto"
+          }
+        ],
+        [
+          {
+            "text": "+ Criado uma rota de "
+          },
+          {
+            "code": "GET"
+          },
+          {
+            "text": " para patch"
+          }
+        ],
+        [
+          {
+            "text": "+ Criado conexão com MongoDB"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "SCSS",
+      "icon": "FaSass",
+      "list": [
+        [
+          {
+            "text": "- Alguns comentários foram perdidos foram removidos"
+          }
+        ],
+        [
+          {
+            "text": "/ Foram separados algumas propriedades de "
+          },
+          {
+            "code": "mainSection"
+          },
+          {
+            "text": " e movido para "
+          },
+          "SplashText"
+        ]
+      ]
+    }
+  ]
+}

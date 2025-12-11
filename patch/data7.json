@@ -1,0 +1,114 @@
+{
+  "version": {
+    "name": "Versão 1.7.0",
+    "time": "10/12/2025",
+    "patch_id": 7
+  },
+  "content": [
+    {
+      "title": "JavaScript",
+      "icon": "IoLogoJavascript",
+      "list": [
+        [
+          {
+            "text": "+ Foi adicionado uma variável chamada "
+          },
+          {
+            "code": "serverAddress"
+          },
+          {
+            "text": " para poder apontar para o servidor dependendo do uso da máquina que estiver desenvolvendo"
+          }
+        ]
+      ]
+    },
+
+    {
+      "title": "React",
+      "icon": "FaReact",
+      "list": [
+        [
+          {
+            "text": "+ Ajuste realizado em "
+          },
+          {
+            "code": "Mainsection"
+          },
+          {
+            "text": " para quando os dados forem carregados vazios em "
+          },
+          {
+            "code": "splashText"
+          },
+          { "text": " não darem conflito com o código" }
+        ]
+      ]
+    },
+    {
+      "title": "Anguar",
+      "icon": "FaAngular",
+      "list": [
+        [
+          {
+            "text": "+ Criado o projeto "
+          },
+          {
+            "code": "Dashboard"
+          },
+          {
+            "text": " para interagir com o banco de dados sem precisar escrever o código bruto e ter uma tela amigável para fazer os ajustes, no momento ela não solicita senha de acesso ou pesquisa avançada, isso será implementado no futuro"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "NestJS",
+      "icon": "SiNestjs",
+      "list": [
+        [
+          {
+            "text": "+ Adicionado  "
+          },
+          {
+            "code": "CRUD Create, Read, Update, Delet"
+          },
+          {
+            "text": " para a rota de splash-text, serviços como listagem e filtro vão ser implementados futuramente"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "GIT",
+      "icon": "FaGitAlt",
+      "list": [
+        [
+          {
+            "text": "+ Foram criados duas "
+          },
+          {
+            "code": "Branch"
+          },
+          {
+            "text": " do projeto para armazenar o banco de dados voltado para "
+          },
+          {
+            "code": "MongDB"
+          },
+          {
+            "text": " e a "
+          },
+          {
+            "text": "Dashboard"
+          },
+          {
+            "text": " em "
+          },
+          {
+            "code": " Angular"
+          }
+        ]
+      ]
+    }
+  ]
+}
