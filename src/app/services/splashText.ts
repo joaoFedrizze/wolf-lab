@@ -1,8 +1,9 @@
 import axios from "axios";
+import { serverAddress } from "../config";
 
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = `${serverAddress}:8080`;
 
 export async function getSplashtexts() {
-  const response = await axios.get(`${API_BASE_URL}/splashtext`);
-  return response.data.splashtexts;
+  const response = await axios.get(`${API_BASE_URL}/splash-text/list`);
+  return response.data;
 }

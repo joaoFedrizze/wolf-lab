@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { getSplashtexts } from "@/app/services/splashText";
 import "./style.scss";
 
@@ -44,7 +44,7 @@ export default function MainSection() {
         </span>
         <div className="banner-text">
           <h2>WOLF</h2>
-          {splashText.length < 0 ? (
+          {splashText.length < 0 || splashText == undefined ? (
             ""
           ) : (
             <SplashTextComponent splashTextContent={splashText} />
