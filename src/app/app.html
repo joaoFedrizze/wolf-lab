@@ -1,0 +1,116 @@
+<main class="main">
+  <app-aside-menu></app-aside-menu>
+  <div class="content">
+    <app-main-header></app-main-header>
+    <section class="main-content">
+      @if(isModalDeleteOpen()){
+      <div class="app-modal">
+        <div class="app-modal-container">
+          <h3>Você deseja estar excluindo {{ itemNameText }}</h3>
+          <p>
+            Para estar excluindo o item digite o nome
+            <b>{{ itemNameText }}</b>
+            abaixo
+          </p>
+          <form>
+            <input
+              type="text"
+              placeholder="{{ itemNameText }}"
+              class="input-class"
+              [(ngModel)]="deleteItemNameValidate"
+              name="deleteItemNameValidate"
+            />
+
+            <div>
+              <button class="button-class" (click)="delete()">Confirmar</button>
+              <button class="button-class" (click)="closeDelete()">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      }
+
+      <h1>Splash Text</h1>
+
+      @if(!isFormOpen()){
+      <div class="panel-container">
+        <div class="panel-title">
+          <h2>Consultar Splash Texts</h2>
+        </div>
+        <div class="panel-content">
+          <table class="panel-tables">
+            <thead>
+              <tr>
+                <th class="panel-table-clickables"><input type="checkbox" /></th>
+                <th>Item name</th>
+                <th class="panel-table-clickables">Visivel</th>
+                <th class="panel-table-clickables">Excluir</th>
+                <th class="panel-table-clickables">Editar</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(splash of splashText$ | async; track splash.item_id){
+              <tr>
+                <td class="panel-table-clickables"><input type="checkbox" /></td>
+                <td class="panel-item-name">{{ splash.item }}</td>
+                <td class="panel-table-clickables">
+                  <div (click)="toggleHide(splash._id, splash.item, splash.isHide)">
+                    @if(!splash.isHide){<fa-icon class="clickables-icon" [icon]="faEye" />}@else
+                    {<fa-icon class="clickables-icon" [icon]="faEyeSlash" />}
+                  </div>
+                </td>
+                <td class="panel-table-clickables">
+                  <fa-icon
+                    [icon]="faTrash"
+                    class="clickables-icon"
+                    (click)="openDelete(splash._id, splash.item)"
+                  />
+                </td>
+                <td class="panel-table-clickables">
+                  <fa-icon
+                    class="clickables-icon"
+                    [icon]="faPen"
+                    (click)="changeUpdateForm(true, splash._id, splash.item, splash.isHide)"
+                  />
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+
+          <button class="button-class" (click)="changeForm(true)">Adicionar</button>
+        </div>
+      </div>
+      }@else {
+      <div class="panel-container">
+        <div class="panel-title">
+          <h2>Adicionar Splash Texts</h2>
+        </div>
+
+        <div class="panel-content">
+          <form>
+            <label>Nome do Item</label>
+            <input
+              type="text"
+              placeholder="Splash Text"
+              class="input-class"
+              [(ngModel)]="itemNameText"
+              name="itemNameText"
+            />
+            <div>
+              <input type="checkbox" [(ngModel)]="itemIsHide" name="itemIsHide" checked="true" />
+              <label>Visivel</label>
+            </div>
+            <div>
+              <button class="button-class" (click)="sendData()">Adicionar</button>
+              <button class="button-class" (click)="changeForm(false)">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      }
+    </section>
+  </div>
+</main>
+
+<router-outlet />
